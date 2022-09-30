@@ -1,0 +1,22 @@
+{{define "_container"}}
+<article class="container-info" data-id="{{.ID}}" data-state="{{.State}}">
+  <header>
+    <h4>{{.Name}}</h4>
+    <h5>({{.ImageName}})</h5>
+  </header>
+
+  <a class="button" href="#">
+    <span class="text">Update</span>
+    <span class="loader"></span>
+    <span class="cross"></span>
+    <span class="check"></span>
+  </a>
+
+  <details{{if not .Changelog}} disabled{{end}}>
+    <summary>Changelog</summary>
+    <div class="markdown-body">
+    {{.Changelog}}
+    <div>
+  </details>
+</article>
+{{end}}

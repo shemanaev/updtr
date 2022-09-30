@@ -1,0 +1,50 @@
+version: 1
+images:
+  -
+    names: [jellyfin/jellyfin, linuxserver/jellyfin, lscr.io/linuxserver/jellyfin, hotio/jellyfin, cr.hotio.dev/hotio/jellyfin]
+    url: https://github.com/jellyfin/jellyfin
+    type: Github
+  -
+    names: [linuxserver/qbittorrent, lscr.io/linuxserver/qbittorrent, hotio/qbittorrent, cr.hotio.dev/hotio/qbittorrent]
+    url: https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/Changelog
+    type: Plaintext
+  -
+    names: [adguard/adguardhome]
+    url: https://github.com/AdguardTeam/AdGuardHome
+    type: Github
+  -
+    names: [b4bz/homer]
+    url: https://github.com/bastienwirtz/homer
+    type: Github
+  -
+    names: [amir20/dozzle]
+    url: https://github.com/amir20/dozzle
+    type: Github
+  -
+    names: [gitea/gitea]
+    url: https://github.com/go-gitea/gitea
+    type: Github
+  -
+    names: [portainer/portainer-ce]
+    url: https://github.com/portainer/portainer
+    type: Github
+  -
+    names: [linuxserver/transmission, lscr.io/linuxserver/transmission]
+    url: https://github.com/transmission/transmission
+    type: Github
+  -
+    names: [linuxserver/radarr, lscr.io/linuxserver/radarr, hotio/radarr, cr.hotio.dev/hotio/radarr]
+    url: https://github.com/Radarr/Radarr
+    type: Github
+  -
+    names: [linuxserver/bazarr, lscr.io/linuxserver/bazarr, hotio/bazarr, cr.hotio.dev/hotio/bazarr]
+    url: https://github.com/morpheus65535/bazarr
+    type: Github
+  -
+    names: [linuxserver/jackett, lscr.io/linuxserver/jackett, hotio/jackett, cr.hotio.dev/hotio/jackett]
+    url: https://github.com/Jackett/Jackett
+    type: Github
+  -
+    names: [linuxserver/ombi, lscr.io/linuxserver/ombi]
+    url: https://github.com/Ombi-app/Ombi
+    type: Github

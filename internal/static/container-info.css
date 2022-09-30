@@ -1,0 +1,83 @@
+
+article.container-info {
+  margin: 1em auto;
+}
+
+article.container-info:not(:last-child) {
+  border-bottom: 1px dashed #5d5d5d;
+  padding-bottom: 1em;
+}
+
+article.container-info > header {
+  width: 80%;
+}
+
+article.container-info > header > h4 {
+  font-size: 1em;
+  font-weight: 600;
+  display: inline;
+}
+
+article.container-info > header > h5 {
+  font-size: 1em;
+  font-weight: normal;
+  display: inline;
+}
+
+article.container-info a.button {
+  margin-top: -1.25em;
+  min-width: 30px;
+}
+
+article.container-info > details > summary {
+  cursor: pointer;
+}
+
+article.container-info > details[disabled] > summary {
+  pointer-events: none;
+  color: #777;
+}
+
+article.container-info a.button > span.text {
+  display: none;
+}
+
+article.container-info[data-state="Missing"] {
+  opacity: 0.5;
+}
+
+article.container-info:not([data-state="Stale"]) a.button {
+  cursor: default;
+}
+
+article.container-info[data-state="Error"] a.button {
+  background-color: #f55;
+}
+
+article.container-info[data-state="RequestedUpdate"] a.button,
+article.container-info[data-state="Updating"] a.button {
+  background-color: #48f;
+}
+
+article.container-info[data-state="Fresh"] a.button {
+  background-color: #5d5;
+}
+
+article.container-info[data-state="Stale"] a.button > span.text {
+  display: inline;
+}
+
+article.container-info[data-state="RequestedUpdate"] a.button > span.loader,
+article.container-info[data-state="Updating"] a.button > span.loader {
+  display: inline-block;
+  margin-bottom: -5px;
+}
+
+article.container-info[data-state="Error"] a.button > span.cross {
+  display: inline-block;
+  margin-bottom: -5px;
+}
+
+article.container-info[data-state="Fresh"] a.button > span.check {
+  display: inline-block;
+}

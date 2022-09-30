@@ -1,0 +1,20 @@
+{{define "_layout"}}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Updtr</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="/static/main.css">
+  <link rel="stylesheet" href="/static/markdown.css">
+  <link rel="stylesheet" href="/static/container-info.css">
+</head>
+<body>
+<main>
+  {{template "content" .}}
+</main>
+</body>
+</html>
+{{end}}

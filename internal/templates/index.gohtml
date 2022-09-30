@@ -1,0 +1,20 @@
+{{template "_layout" .}}
+{{define "content"}}
+{{if not .Containers}}
+  <div class="generic-info">
+    <span>All is up to date.</span>
+    <a id="force-refresh" class="button" href="#">Force refresh</a>
+  </div>
+{{else}}
+  <div class="generic-info">
+    <a id="update-all" class="button" href="#">Update all</a>
+  </div>
+  <div>
+  {{range $container := .Containers}}
+    {{template "_container" $container}}
+  {{end}}
+  </div>
+{{end}}
+<script>window.LAST_UPDATE = {{.LastUpdate}}</script>
+<script src="/static/main.js"></script>
+{{end}}
