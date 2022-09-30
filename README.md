@@ -2,9 +2,11 @@
 
 Drop-in replacement of [Watchtower](https://github.com/containrrr/watchtower) for manual updating.
 
+## Why?
+
+I prefer to review pending updates once in a while and read changelog before, so I would be shure nothing will be broken or, at least, will know how to fix it.
 
 https://user-images.githubusercontent.com/1058537/193275951-29149586-00b2-45cc-a6f2-64ea4424e1ab.mp4
-
 
 ## Quick Start
 
@@ -58,6 +60,8 @@ Updtr is built on top of Watchtower and can be configured via environment variab
 
 ## Mappings
 
+It describes the way to find changelog by image name. Feel free to propose new mappings into [this file](internal/config/mapping.yml).
+
 ```yaml
 # version of mappings file
 version: 1
@@ -65,7 +69,7 @@ images:
   -
     # array of image names
     # can be with tag or without
-    # tagger names has higher priority
+    # tagged names has higher priority
     names: [shemanaev/updtr]
     # url to changelog
     url: https://github.com/shemanaev/updtr
