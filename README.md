@@ -2,6 +2,10 @@
 
 Drop-in replacement of [Watchtower](https://github.com/containrrr/watchtower) for manual updating.
 
+
+https://user-images.githubusercontent.com/1058537/193275951-29149586-00b2-45cc-a6f2-64ea4424e1ab.mp4
+
+
 ## Quick Start
 
 Run the updtr container with the following command:
