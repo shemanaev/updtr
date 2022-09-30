@@ -67,8 +67,14 @@ func RunServer() error {
 	scheduler := cron.New(cron.WithChain(
 		cron.SkipIfStillRunning(logrusr.New(logger)),
 	))
-	scheduler.AddFunc("@every 3s", func() { client.DoUpdate() })
-	scheduler.AddFunc(scheduleSpec, func() { client.RefreshContainers() })
+	_, err = scheduler.AddFunc("@every 3s", func() { client.DoUpdate() })
+	if err != nil {
+		return err
+	}
+	_, err = scheduler.AddFunc(scheduleSpec, func() { client.RefreshContainers() })
+	if err != nil {
+		return err
+	}
 
 	scheduler.Start()
 	defer scheduler.Stop()

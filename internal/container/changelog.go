@@ -76,7 +76,10 @@ func (c *Client) getChangelog(typ config.ChangelogType, url string) (string, err
 
 		output := &strings.Builder{}
 		content := bytes.NewReader(resBody)
-		libasciidoc.Convert(content, output, asciidocconf.NewConfiguration())
+		_, err = libasciidoc.Convert(content, output, asciidocconf.NewConfiguration())
+		if err != nil {
+			return "", err
+		}
 
 		return output.String(), nil
 
