@@ -27,6 +27,7 @@ type Client struct {
 	client       container.Client
 	filter       types.Filter
 	timeout      time.Duration
+	cleanup      bool
 }
 
 func NewClient(cfg config.Settings, mapping []config.ImagesChangelog) *Client {
@@ -48,6 +49,7 @@ func NewClient(cfg config.Settings, mapping []config.ImagesChangelog) *Client {
 		client:     cl,
 		filter:     filter,
 		timeout:    cfg.StopTimeout,
+		cleanup:    cfg.Cleanup,
 	}
 	return &client
 }
@@ -171,6 +173,8 @@ func (c *Client) RefreshContainers() {
 
 func (c *Client) DoUpdate() {
 	// TODO: self update
+	cleanupImages := make([]types.ImageID, 0)
+
 	for i, container := range c.stale {
 		if container.State != RequestedUpdate {
 			continue
@@ -204,6 +208,21 @@ func (c *Client) DoUpdate() {
 		c.lastUpdate = time.Now()
 		c.staleMutex.Unlock()
 
+		cleanupImages = append(cleanupImages, container.Container.ImageID())
+
 		log.Tracef("Container %s successfully updated", container.Name)
+	}
+
+	if c.cleanup {
+		c.cleanupImages(cleanupImages)
+	}
+}
+
+func (c *Client) cleanupImages(ids []types.ImageID) {
+	log.Tracef("cleanup images: %d", len(ids))
+	for _, id := range ids {
+		if err := c.client.RemoveImageByID(id); err != nil {
+			log.Error(err)
+		}
 	}
 }

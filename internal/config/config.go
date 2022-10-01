@@ -20,6 +20,7 @@ type Settings struct {
 	EnableLabel       bool
 	Scope             string
 	StopTimeout       time.Duration
+	Cleanup           bool
 }
 
 func LoadConfig() Settings {
@@ -41,6 +42,7 @@ func LoadConfig() Settings {
 	s.EnableLabel = env.GetBoolDefault("WATCHTOWER_LABEL_ENABLE", false)
 	s.Scope = env.GetDefault("WATCHTOWER_SCOPE", "")
 	s.StopTimeout = env.GetDurationDefault("WATCHTOWER_TIMEOUT", timeout)
+	s.Cleanup = env.GetBoolDefault("WATCHTOWER_CLEANUP", false)
 
 	return s
 }

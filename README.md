@@ -57,6 +57,7 @@ Updtr is built on top of Watchtower and can be configured via environment variab
 - [WATCHTOWER_LABEL_ENABLE](https://containrrr.dev/watchtower/arguments/#filter_by_enable_label)
 - [WATCHTOWER_SCOPE](https://containrrr.dev/watchtower/arguments/#filter_by_scope)
 - [WATCHTOWER_TIMEOUT](https://containrrr.dev/watchtower/arguments/#wait_until_timeout)
+- [WATCHTOWER_CLEANUP](https://containrrr.dev/watchtower/arguments/#cleanup)
 
 ## Mappings
 
