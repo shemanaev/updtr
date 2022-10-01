@@ -64,9 +64,12 @@ func RunServer() error {
 		scheduleSpec = fmt.Sprintf("@every %ds", cfg.PollInterval)
 	}
 
-	scheduler := cron.New(cron.WithChain(
-		cron.SkipIfStillRunning(logrusr.New(logger)),
-	))
+	scheduler := cron.New(
+		cron.WithChain(cron.SkipIfStillRunning(logrusr.New(logger))),
+		cron.WithParser(
+			cron.NewParser(
+				cron.SecondOptional|cron.Minute|cron.Hour|cron.Dom|cron.Month|cron.Dow|cron.Descriptor)),
+	)
 	_, err = scheduler.AddFunc("@every 3s", func() { client.DoUpdate() })
 	if err != nil {
 		return err
