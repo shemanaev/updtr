@@ -31,14 +31,14 @@ type Client struct {
 }
 
 func NewClient(cfg config.Settings, mapping []config.ImagesChangelog) *Client {
-	cl := container.NewClient(
-		!cfg.NoPull,
-		cfg.IncludeStopped,
-		cfg.ReviveStopped,
-		cfg.RemoveVolumes,
-		cfg.IncludeRestarting,
-		cfg.WarnOnHeadFailure,
-	)
+	cl := container.NewClient(container.ClientOptions{
+		PullImages:        !cfg.NoPull,
+		IncludeStopped:    cfg.IncludeStopped,
+		ReviveStopped:     cfg.ReviveStopped,
+		RemoveVolumes:     cfg.RemoveVolumes,
+		IncludeRestarting: cfg.IncludeRestarting,
+		WarnOnHeadFailed:  container.WarningStrategy(cfg.WarnOnHeadFailure),
+	})
 
 	filter, _ := filters.BuildFilter([]string{}, cfg.EnableLabel, cfg.Scope)
 
