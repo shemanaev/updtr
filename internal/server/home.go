@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	log "github.com/sirupsen/logrus"
+	"golang.org/x/exp/slices"
 
 	"github.com/shemanaev/updtr/internal/container"
 	"github.com/shemanaev/updtr/internal/templates"
@@ -32,13 +33,16 @@ func (h *HomeHandler) Home(w http.ResponseWriter, r *http.Request) {
 	type arguments struct {
 		LastUpdate string
 		Containers []container.Info
+		HasUpdates bool
 	}
 
 	lastUpdate := h.client.GetLastUpdateTime()
 	ci := h.client.GetStaleContainers()
+	hasUpdates := slices.IndexFunc(ci, func(e container.Info) bool { return e.State != container.Fresh })
 	args := arguments{
 		LastUpdate: fmt.Sprintf("%v", lastUpdate.Unix()),
 		Containers: ci,
+		HasUpdates: hasUpdates != -1,
 	}
 
 	if err := h.tpl.Execute(w, args); err != nil {

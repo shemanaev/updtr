@@ -59,6 +59,22 @@ Updtr is built on top of Watchtower and can be configured via environment variab
 - [WATCHTOWER_TIMEOUT](https://containrrr.dev/watchtower/arguments/#wait_until_timeout)
 - [WATCHTOWER_CLEANUP](https://containrrr.dev/watchtower/arguments/#cleanup)
 
+### Not Supported
+
+- [NO_COLOR](https://containrrr.dev/watchtower/arguments/#ansi_colors)
+- [WATCHTOWER_NO_RESTART](https://containrrr.dev/watchtower/arguments/#without_restarting_containers)
+- [WATCHTOWER_NO_STARTUP_MESSAGE](https://containrrr.dev/watchtower/arguments/#without_sending_a_startup_message)
+- [WATCHTOWER_HTTP_API_TOKEN](https://containrrr.dev/watchtower/arguments/#http_api_token)
+- [WATCHTOWER_HTTP_API_METRICS](https://containrrr.dev/watchtower/arguments/#http_api_metrics)
+
+### Doesn't make sense in Updtr
+
+- [WATCHTOWER_RUN_ONCE](https://containrrr.dev/watchtower/arguments/#run_once)
+- [WATCHTOWER_HTTP_API_UPDATE](https://containrrr.dev/watchtower/arguments/#http_api_mode)
+- [WATCHTOWER_HTTP_API_PERIODIC_POLLS](https://containrrr.dev/watchtower/arguments/#http_api_periodic_polls)
+- [WATCHTOWER_MONITOR_ONLY](https://containrrr.dev/watchtower/arguments/#without_updating_containers)
+- [WATCHTOWER_ROLLING_RESTART](https://containrrr.dev/watchtower/arguments/#rolling_restart) - this is default and only supported mode
+
 ## Mappings
 
 It describes the way to find changelog by image name. Feel free to propose new mappings into [this file](internal/config/mapping.yml).
